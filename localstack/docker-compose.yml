@@ -1,0 +1,13 @@
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: aws-services-local
+    environment:
+      #- SERVICES=dynamodb,s3,sqs,sns
+      - AWS_ACCESS_KEY_ID=fakeAccessKeyId
+      - AWS_SECRET_ACCESS_KEY=fakeSecretAccessKey
+      - AWS_DEFAULT_REGION=us-east-1
+    ports:
+      - "4566-4597:4566-4597"
+    volumes:
+      - "./volumes:/var/lib/localstack"
